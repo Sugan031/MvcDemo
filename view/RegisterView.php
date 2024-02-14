@@ -1,3 +1,6 @@
+<?php
+require_once "../Controller/RegisterController.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,10 +39,6 @@
 <body>
 <form action="" method="post" id="loginform">
         <table>
-            <tr>
-                <th>ID</th>
-                <td><input type="number" name="id" required></td>
-            </tr>
             <tr>
                 <th>Username</th>
                 <td><input type="text" name="name" required></td>
