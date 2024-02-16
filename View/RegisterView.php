@@ -1,5 +1,5 @@
 <?php
-require_once "../Controller/RegisterController.php";
+    require_once "../Controller/RegisterController.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,31 +8,38 @@ require_once "../Controller/RegisterController.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body{
+            background-color:#b0c4de;
+        }
          table {
             position: relative;
             top: 250px;
             width: 50%;
             margin: auto;
             border-collapse: collapse;
-
+            background-color: rgba(58, 54, 54, 0.5);
+            border-radius: 20px;
         }
 
         th, td {
             padding: 10px;
-            border: 1px solid lightslategray;
+            border: 0px solid lightslategray;
             text-align: left;
         }
         #mybutton{
+            position: relative;
             background-color: blue;
             color: white;
             padding: 10px 15px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            left: 300px;
         }
-        img{
-            position: absolute;
-            opacity: 0.5;
+        #back{
+            position: relative;
+            color: black;
+            top: -260px;
         }
     </style>
 </head>
@@ -80,5 +87,6 @@ require_once "../Controller/RegisterController.php";
             </tr>
         </table>
     </form>
+    <a href="/MvcDemo/" id="back">back</a>
 </body>
 </html>

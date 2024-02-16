@@ -7,6 +7,7 @@ class RegisterModel {
         $stmt = $conn->prepare("insert into person_details(name, email_id, mobile_no, password, country,status)values(?,?,?,?,?,?)");
         $stmt->bind_param("ssisss", $name, $email, $mobile, $pass, $country, $status);
         $stmt->execute();
+        return true;
 
     }
 }

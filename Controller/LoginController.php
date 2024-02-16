@@ -1,32 +1,26 @@
 <?php
-require_once("./Model/LoginModel.php");
-    class LoginControl{
-        private $model;
+require_once $_SERVER['DOCUMENT_ROOT'] . "/MvcDemo/Model/LoginModel.php";
+class LoginControl {
+    private $model;
 
-        public function __construct($model)
-        {
-            $this->model=$model;
-        }
-
-        public function processCheck($email, $pass){
-            $this->model->checkValues($email, $pass);
-        }
-        // public function openRegister(){
-        //     header("Location: /MvcDemo/view/register.php ");
-        // }
+    public function __construct($model) {
+        $this->model = $model;
     }
 
-    $logModel = new LoginModel();
-    $logControl = new LoginControl($logModel);
-
-    if(isset($_POST["submit"])){
-        $email = $_POST["email"];
-        $pass = $_POST["password"];
-
-        $logControl->processCheck($email,$pass);
+    public function processCheck($email, $pass) {
+        $row = $this->model->checkValues($email, $pass);
+        return $row;
     }
-    // if(isset($_POST["register"])){
-    //     $logControl->openRegister();
-    // }
+}
 
-?>
+$logModel = new LoginModel();
+$logControl = new LoginControl($logModel);
+
+if (isset($_POST["submit"])) {
+    $email  = $_POST["email"];
+    $pass   = $_POST["password"];
+    $row    = $logControl->processCheck($email, $pass);
+    if ($row) {
+        header("Location: View/HomeView.php");
+    }
+}

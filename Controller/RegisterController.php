@@ -10,9 +10,12 @@ class RegisterControl {
     }
 
     public function processValues($name, $email, $mobile, $pass, $country, $status) {
-        $this->model->addValues($name, $email, $mobile, $pass, $country, $status);
+        $result = $this->model->addValues($name, $email, $mobile, $pass, $country, $status);
         // header("Location: /PHP_practiceCodes/login.php");
         echo "registration success";
+        if($result){
+            header("Location: /MvcDemo/");
+        }
     }
 
 }
@@ -20,12 +23,13 @@ class RegisterControl {
 $regModel = new RegisterModel();
 $regControl = new RegisterControl($regModel);
 if (isset($_POST["submit"])) {
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $mobile = $_POST["mobile"];
-    $pass = $_POST["password"];
-    $country = $_POST["country"];
-    $status = "active";
+    $name       = $_POST["name"];
+    $email      = $_POST["email"];
+    $mobile     = $_POST["mobile"];
+    $passOne    = $_POST["password"];
+    $pass       = password_hash($passOne, PASSWORD_DEFAULT);
+    $country    = $_POST["country"];
+    $status     = "active";
 
     $regControl->processValues($name, $email, $mobile, $pass, $country, $status);
 }
