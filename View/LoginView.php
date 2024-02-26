@@ -11,11 +11,6 @@
     <style>
         body{
             background-color:#b0c4de;
-            background-repeat: no-repeat;
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         table {
             position: relative;
@@ -28,7 +23,7 @@
             /* background-color: lightskyblue; */
             /* background-color: lightblue; */
             background-color: rgba(58, 54, 54, 0.5);
-            left: 200px;
+            /* left: 200px; */
         }
 
         th, td {
@@ -42,7 +37,7 @@
             background-color: blue;
             color: white;
             padding: 10px 15px;
-            margin-left: 100px;
+            margin-left: 300px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -60,8 +55,13 @@
         span{
             position: relative;
             display: inline-block;
-            top: 400px;
-            right: 110px;
+            top: 350px;
+            left: 550px;
+        }
+        #regis{
+            position: relative;
+            left: 550px;
+            top: 350px;
         }
 
     </style>
@@ -89,7 +89,10 @@
     <button name="register" type="submit">Register</button>
     </form> -->
    <!-- <p>If you don't have a account,</p> -->
-  <span>If you are not registered already,</span> <a href="View/RegisterView.php">Register</a>
+  <span>If you are not registered already,</span> <a href="View/RegisterView.php" id="regis">Register</a>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="./View/js/LoginValidation.js"></script>
 </body>
 </html>
 <?php

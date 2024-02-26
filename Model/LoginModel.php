@@ -4,7 +4,7 @@ session_start();
 class LoginModel {
     public function checkValues($email, $pass) {
         global $conn;
-        $sql    = "SELECT password FROM person_details WHERE email_id=? AND status = 'active'";
+        $sql    = "SELECT password FROM person_details WHERE email_id=? AND status = 'A'";
         $stmt   = $conn->prepare($sql);
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -23,5 +23,4 @@ class LoginModel {
             }
         }
     }
-
 }

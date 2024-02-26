@@ -44,7 +44,7 @@
     </style>
 </head>
 <body>
-<form action="" method="post" id="loginform">
+<form action="" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <th>Username</th>
@@ -57,7 +57,8 @@
             </tr>
             <tr>
             <th>Mobile No.</th>
-            <td><input type="tel" name="mobile" required id="mobile"></td>
+            <td><input type="tel" name="mobile" required id="mobile">
+            <small id="NumError">mobile number must be 10 numbers long</small></td>
             </tr>
             <tr>
             <th>Password</th>
@@ -66,27 +67,29 @@
             </td>
             </tr>
             <tr>
-            <th>Country</th>
+            <th>Department</th>
             <td>
-            <select name="country" required>
-                        <option value="" disabled selected>Select a country</option>
-                        <option value="usa">USA</option>
-                        <option value="canada">Canada</option>
-                        <option value="uk">UK</option>
-                        <option value="India">India</option>
-                        <option value="Scotland">Scotland</option>
+            <select name="department" required>
+                        <option value="" disabled selected>Select a department</option>
+                        <option value="development">Development</option>
+                        <option value="sales">Sales</option>
+                        <option value="production">Production</option>
                     </select>
             </td>
             </tr>
-            <!-- <tr>
+             <tr>
                 <th>Image</th>
-                <td><input type="file" name="image"></td>
-            </tr> -->
+                <td> <input type="file" name="my_image" required></td>
+            </tr> 
             <tr>
                 <td colspan="2"><button id="mybutton" name="submit">Submit</button></td>
             </tr>
         </table>
     </form>
     <a href="/MvcDemo/" id="back">back</a>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="./js/RegisterValidation.js"></script>
 </body>
 </html>

@@ -58,10 +58,22 @@
         #back{
             color: black;
         }
+        .div1 {
+            width: 35mm;
+            height: 45mm;
+            overflow: hidden;
+            border: 1px solid #000; 
+        }
+
+        .div1 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
     </style>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
     <table>
          <tr>
             <th>ID</th>
@@ -73,11 +85,19 @@
         </tr>
         <tr>
             <th>Email</th>
-            <td><input type="email" name="email" value="<?php echo $row["email_id"]; ?>"></td>
+            <td><input type="email" name="email" id="email" value="<?php echo $row["email_id"]; ?>">
+            <small id="small"></small></td></td>
         </tr>
         <tr>
             <th>Mobile No</th>
-            <td><input type="tel" name="mobile" value="<?php echo $row["mobile_no"]; ?>"></td>
+            <td><input type="tel" name="mobile" id="mobile" value="<?php echo $row["mobile_no"]; ?>">
+            <small id="NumError">mobile number must be 10 numbers long</small></td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td><div class="div1"> <img src="../images/<?php echo $row["image_url"]; ?>" alt="<?php echo $row["image_url"];?>"></div>
+            <input type="text" name="file" value="<?php echo $row["image_url"]; ?>" hidden>
+            <br><input type="file" name="my_image"></td>
         </tr>
         <!-- <tr>
             <th>Country</th>
@@ -89,5 +109,8 @@
     </table>
     </form>
     <a href="./ShowView.php" id="back">back</a>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../View/js/LoginValidation.js"></script>
+    <script src="../View/js/RegisterValidation.js"></script>
 </body>
 </html>

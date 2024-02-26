@@ -19,7 +19,7 @@ class HomeController {
                 $dEmail     = $row["email_id"];
                 $dMobile    = $row["mobile_no"];
                 $dPass      = $row["password"];
-                $dCountry   = $row["country"];
+                $dCountry   = $row["department"];
             }
         }
         $_SESSION["id"] = $dId;
@@ -32,13 +32,20 @@ class HomeController {
         return $result;
     }
 
-    public function delValue() {
-        $email = $_SESSION["email"];
-        $this->model->delValues($email);
-    }
+    // public function delValue() {
+    //     $email = $_SESSION["email"];
+    //     $this->model->delValues($email);
+    // }
 
-    public function actValues($id) {
-        $result = $this->model->actValByRow($id);
+    public function actValues($id,$status) {
+        $dId = $_SESSION["id"];
+        if($id != $dId){
+        $result = $this->model->actValByRow($id,$status);
+        } else{
+            $message = "You can't delete your own id";
+            $_SESSION["msg"] = $message;
+            header("Location: ../View/ShowView.php");
+        }
         return $result;
     }
     public function logout(){
@@ -53,13 +60,18 @@ class HomeController {
 $homeModel = new HomeModel();
 $homeControl = new HomeController($homeModel);
 // $homeControl->delValue();
-if (isset($_GET["id"])) {
+if (isset($_GET["id"]) && isset($_GET["status"])) {
     $id = $_GET["id"];
+    $status = $_GET["status"];
     echo $id;
+    echo $status;
 
-    $result = $homeControl->actValues($id);
-    if ($result) {
+    $result = $homeControl->actValues($id,$status);
+    if ($result && $status=='A') {
         header("Location: ../View/DelValueView.php");
+    } elseif($result && $status=='D'){
+        $_SESSION["msg"] = "";
+        header("Location: ../View/ShowView.php");
     } else {
         echo "Value is not deleted";
     }

@@ -44,6 +44,18 @@
         #back{
             color: black;
         }
+        .div1 {
+            width: 35mm;
+            height: 45mm;
+            overflow: hidden;
+            border: 1px solid #000; 
+        }
+
+        .div1 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
     </style>
 </head>
 <body>
@@ -57,6 +69,7 @@
             <th>Mobile No.</th>
             <th>Country</th>
             <th>Status</th>
+            <th>Image</th>
             <th></th>
             </tr>
         </thead>
@@ -70,10 +83,13 @@
                     <td><?php echo $row["name"]; ?></td>
                     <td><?php echo $row["email_id"]; ?></td>
                     <td><?php echo $row["mobile_no"]; ?></td>
-                    <td><?php echo $row["country"]; ?></td>
+                    <td><?php echo $row["department"]; ?></td>
                     <td><?php echo $row["status"]; ?></td>
                     <td>
-                    <button id="delbutton" type="submit" name="delete"><a href="../Controller/HomeController.php?id=<?php echo $row["id"]; ?>">Activate</a></button>
+                        <div class="div1"> <img src="../images/<?php echo $row["image_url"]; ?>" alt="<?php echo $row["image_url"]; ?>"></div>
+                    </td>
+                    <td>
+                    <button id="delbutton" type="submit" name="delete"><a href="../Controller/HomeController.php?id=<?php echo $row["id"]; ?>&status=A">Activate</a></button>
                     </td>
                 </tr>
                 <?php

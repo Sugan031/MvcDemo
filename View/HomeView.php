@@ -86,7 +86,7 @@
             <td><?php echo $val[3]; ?></td>
         </tr>
         <tr>
-            <th>Country</th>
+            <th>Department</th>
             <td><?php echo $val[5]; ?></td>
         </tr>
     </table>
